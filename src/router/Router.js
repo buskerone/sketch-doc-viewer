@@ -4,6 +4,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
+import LayoutHOC from '../hoc/LayoutHOC';
 
 const Document = lazy(() => import('../pages/Document'));
 const Artboard = lazy(() => import('../pages/Artboard'));
@@ -13,8 +14,8 @@ const Router = () => {
     <BrowserRouter>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/document/:id" element={<Document />} />
-          <Route path="/artboard/:id" element={<Artboard />} />
+          <Route path="/document/:id" element={LayoutHOC(Document)} />
+          <Route path="/artboard/:id" element={LayoutHOC(Artboard)} />
         </Routes>
       </Suspense>
     </BrowserRouter>
