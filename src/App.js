@@ -1,8 +1,17 @@
+import { useState } from 'react';
+import AppContext from './context/AppContext';
 import Router from './router';
 import './App.css';
 
 function App() {
-  return <Router />;
+  const [currentDocumentData, setCurrentDocumentData] = useState('');
+  const appCtx = { currentDocumentData, setCurrentDocumentData };
+
+  return (
+    <AppContext.Provider value={appCtx}>
+      <Router />
+    </AppContext.Provider>
+  );
 }
 
 export default App;
