@@ -45,7 +45,9 @@ const Layout = ({ children }) => {
         onPrev={() => navigateThroughArtboards("prev")}
         onNext={() => navigateThroughArtboards("next")}
       />
-      {children}
+      <div className="bg-[#F9F9F9] h-full">
+        {children}
+      </div>
     </div>
   );
 };
