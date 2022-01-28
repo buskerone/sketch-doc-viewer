@@ -5,7 +5,14 @@ import './App.css';
 
 function App() {
   const [currentDocumentData, setCurrentDocumentData] = useState('');
-  const appCtx = { currentDocumentData, setCurrentDocumentData };
+  const [currentArtboardName, setCurrentArtboardName] = useState('');
+
+  const appCtx = {
+    currentDocumentData,
+    setCurrentDocumentData,
+    currentArtboardName,
+    setCurrentArtboardName
+  };
 
   return (
     <AppContext.Provider value={appCtx}>
