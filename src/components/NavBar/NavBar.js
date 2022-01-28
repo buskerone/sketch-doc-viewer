@@ -18,7 +18,7 @@ const NavBar = ({
     {isArtboard ?
       <>
         <div className="flex w-72 justify-start items-center">
-          <img className="mr-4" alt="close" src={CloseIcon} />
+          <img className="mr-6" alt="close" src={CloseIcon} />
           <img className="mr-6 h-10" alt="separator" src={Separator} />
           <img className="mr-4" alt="arrow-left" src={ArrowLeftIcon} />
           <span className="mr-2 text-gray-500">{artboardId}</span>
@@ -26,7 +26,7 @@ const NavBar = ({
           <span className="mr-4 text-gray-500">{totalArtboards}</span>
           <img alt="arrow-right" src={ArrowRightIcon} />
         </div>
-        <div>{artboardName}</div>
+        <div className="text-center">{artboardName}</div>
         <div className="flex w-72 justify-end items-center" />
       </>
       :
