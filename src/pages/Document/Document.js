@@ -31,7 +31,7 @@ const Document = () => {
           currentDocumentData.share.version.document.artboards.entries.map((artboard, key) => (
             <Link
               key={key}
-              to={`/document/${id}/artboard/${key}`}
+              to={`/document/${id}/artboard/${key + 1}`}
             >
               <div className="flex flex-col justify-center items-center">
                 <img

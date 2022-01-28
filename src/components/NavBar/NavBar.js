@@ -12,26 +12,43 @@ const NavBar = ({
   artboardId,
   artboardName,
   isArtboard,
-  totalArtboards
+  totalArtboards,
+  onClose,
+  onPrev,
+  onNext
 }) => (
-  <nav className="flex justify-between items-center w-full h-16 px-8 drop-shadow-md">
+  <nav className="flex justify-between items-center w-full h-16 shadow-md">
     {isArtboard ?
       <>
         <div className="flex w-72 justify-start items-center">
-          <img className="mr-6" alt="close" src={CloseIcon} />
+          <button className="p-6" onClick={onClose}>
+            <img alt="close" src={CloseIcon} />
+          </button>
+
           <img className="mr-6 h-10" alt="separator" src={Separator} />
-          <img className="mr-4" alt="arrow-left" src={ArrowLeftIcon} />
+
+          <button className="p-4" onClick={onPrev}>
+            <img alt="arrow-left" src={ArrowLeftIcon} />
+          </button>
+
           <span className="mr-2 text-gray-500">{artboardId}</span>
+
           <img className="mr-2" alt="breadcrumb" src={BreadcrumbIcon} />
-          <span className="mr-4 text-gray-500">{totalArtboards}</span>
-          <img alt="arrow-right" src={ArrowRightIcon} />
+
+          <span className="text-gray-500">{totalArtboards}</span>
+
+          <button className="p-4" onClick={onNext}>
+            <img alt="arrow-right" src={ArrowRightIcon} />
+          </button>
         </div>
+
         <div className="text-center">{artboardName}</div>
+
         <div className="flex w-72 justify-end items-center" />
       </>
       :
       <div className="flex">
-        <img className="mr-6" alt="sketch" src={SketchLogo} />
+        <img className="ml-6 mr-6" alt="sketch" src={SketchLogo} />
         <span>{documentName}</span>
       </div>
     }

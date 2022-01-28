@@ -27,9 +27,9 @@ const Artboard = () => {
         setCurrentDocumentData(doc);
         setCurrentArtboard(
           {
-            id: parseInt(artboardId) + 1,
-            name: doc.share.version.document.artboards.entries[artboardId].name,
-            files: doc.share.version.document.artboards.entries[artboardId].files
+            id: parseInt(artboardId),
+            name: doc.share.version.document.artboards.entries[artboardId - 1].name,
+            files: doc.share.version.document.artboards.entries[artboardId - 1].files
           }
         );
       } catch(e) {
@@ -42,13 +42,25 @@ const Artboard = () => {
     } else {
       setCurrentArtboard(
         {
-          id: parseInt(artboardId) + 1,
-          name: currentDocumentData.share.version.document.artboards.entries[artboardId].name,
-          files: currentDocumentData.share.version.document.artboards.entries[artboardId].files
+          id: parseInt(artboardId),
+          name: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].name,
+          files: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].files
         }
       );
     }
   }, []);
+
+  useEffect(() => {
+    if (currentDocumentData) {
+      setCurrentArtboard(
+        {
+          id: parseInt(artboardId),
+          name: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].name,
+          files: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].files
+        }
+      );
+    }
+  }, [artboardId, currentDocumentData, setCurrentArtboard])
 
   return (
     <div className="w-full h-full flex justify-center items-center bg-[#F9F9F9] py-10">
