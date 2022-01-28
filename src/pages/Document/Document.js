@@ -24,14 +24,17 @@ const Document = () => {
   }, [])
 
   return (
-    <div className="flex flex-col justify-center items-center py-4">
-      <h1 className="text-2xl mb-2">Document id: {id}</h1>
-      <div className="grid grid-cols-5 gap-10">
+    <div className="flex flex-col justify-center items-center py-8">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 sm:gap-6 md:gap-8 lg:gap-16 xl:gap-20">
         {documentData &&
           documentData.share.version.document.artboards.entries.map((artboard, key) => (
             <Link key={key} to={`/artboard/${key}`}>
               <div className="flex flex-col justify-center items-center">
-                <img alt={artboard.name} src={artboard.files[0].thumbnails[0].url} />
+                <img
+                  className="object-contain h-72 w-40 mb-4"
+                  alt={artboard.name}
+                  src={artboard.files[0].thumbnails[0].url}
+                />
                 <div className="text-sm">{artboard.name}</div>
               </div>
             </Link>
