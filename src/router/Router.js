@@ -17,7 +17,7 @@ const Router = () => {
         <Routes>
           <Route path="/" element={<Navigate to="/document/e981971c-ff57-46dc-a932-a60dc1804992" />} />
           <Route path="/document/:id" element={LayoutHOC(Document)} />
-          <Route path="/artboard/:id" element={LayoutHOC(Artboard)} />
+          <Route path="/document/:id/artboard/:id" element={LayoutHOC(Artboard)} />
         </Routes>
       </Suspense>
     </BrowserRouter>

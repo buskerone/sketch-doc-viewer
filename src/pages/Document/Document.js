@@ -29,7 +29,10 @@ const Document = () => {
       <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 sm:gap-6 md:gap-8 lg:gap-16 xl:gap-20">
         {currentDocumentData &&
           currentDocumentData.share.version.document.artboards.entries.map((artboard, key) => (
-            <Link key={key} to={`/artboard/${key}`}>
+            <Link
+              key={key}
+              to={`/document/${id}/artboard/${key}`}
+            >
               <div className="flex flex-col justify-center items-center">
                 <img
                   className="object-contain h-72 w-40 mb-4"

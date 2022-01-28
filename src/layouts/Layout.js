@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className="h-screen w-full">
-      <NavBar documentName={documentName} />
+      <NavBar documentName={documentName} isArtboard={false} />
       {children}
     </div>
   );
