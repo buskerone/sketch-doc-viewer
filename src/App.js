@@ -5,13 +5,13 @@ import './App.css';
 
 function App() {
   const [currentDocumentData, setCurrentDocumentData] = useState('');
-  const [currentArtboardName, setCurrentArtboardName] = useState('');
+  const [currentArtboard, setCurrentArtboard] = useState('');
 
   const appCtx = {
     currentDocumentData,
     setCurrentDocumentData,
-    currentArtboardName,
-    setCurrentArtboardName
+    currentArtboard,
+    setCurrentArtboard
   };
 
   return (

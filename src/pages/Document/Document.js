@@ -22,7 +22,7 @@ const Document = () => {
     }
 
     fetchDocument();
-  });
+  }, []);
 
   return (
     <div className="flex flex-col justify-center items-center py-8 bg-[#F9F9F9]">

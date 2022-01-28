@@ -13,7 +13,8 @@ const Artboard = () => {
   const {
     currentDocumentData,
     setCurrentDocumentData,
-    setCurrentArtboardName
+    setCurrentArtboard,
+    currentArtboard
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -24,7 +25,13 @@ const Artboard = () => {
         });
 
         setCurrentDocumentData(doc);
-        setCurrentArtboardName(doc.share.version.document.artboards.entries[artboardId].name);
+        setCurrentArtboard(
+          {
+            id: parseInt(artboardId) + 1,
+            name: doc.share.version.document.artboards.entries[artboardId].name,
+            files: doc.share.version.document.artboards.entries[artboardId].files
+          }
+        );
       } catch(e) {
         console.log(e);
       }
@@ -33,16 +40,22 @@ const Artboard = () => {
     if (!currentDocumentData) {
       fetchDocument();
     } else {
-      setCurrentArtboardName(currentDocumentData.share.version.document.artboards.entries[artboardId].name);
+      setCurrentArtboard(
+        {
+          id: parseInt(artboardId) + 1,
+          name: currentDocumentData.share.version.document.artboards.entries[artboardId].name,
+          files: currentDocumentData.share.version.document.artboards.entries[artboardId].files
+        }
+      );
     }
-  });
+  }, []);
 
   return (
     <div className="w-full h-full flex justify-center items-center bg-[#F9F9F9] py-10">
       <img
         className="object-contain h-96 w-auto"
-        alt={currentDocumentData && currentDocumentData.share.version.document.artboards.entries[artboardId].name}
-        src={currentDocumentData && currentDocumentData.share.version.document.artboards.entries[artboardId].files[0].url}
+        alt={currentArtboard && currentArtboard.name}
+        src={currentArtboard && currentArtboard.files[0].url}
       />
     </div>
   );
