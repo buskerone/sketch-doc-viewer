@@ -21,19 +21,21 @@ const Document = () => {
 
   useEffect(() => {
     fetchDocument()
-  })
+  }, [])
 
   return (
     <div className="flex flex-col justify-center items-center py-4">
       <h1 className="text-2xl mb-2">Document id: {id}</h1>
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-5 gap-10">
         {documentData &&
           documentData.share.version.document.artboards.entries.map((artboard, key) => (
             <Link key={key} to={`/artboard/${key}`}>
-              <div className="bg-blue-100 rounded-xl p-4">{artboard.name}</div>
+              <div className="flex flex-col justify-center items-center">
+                <img alt={artboard.name} src={artboard.files[0].thumbnails[0].url} />
+                <div className="text-sm">{artboard.name}</div>
+              </div>
             </Link>
           ))
-
         }
       </div>
     </div>
