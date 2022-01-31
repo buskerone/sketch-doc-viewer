@@ -5,15 +5,16 @@ import {
   Route,
   Navigate
 } from 'react-router-dom';
-import MainLayout from '../layouts/MainLayout';
+import { Loader } from '../components';
 
+const MainLayout = lazy(() => import('../layouts/MainLayout'));
 const Document = lazy(() => import('../pages/Document'));
 const Artboard = lazy(() => import('../pages/Artboard'));
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <MainLayout>
           <Routes>
             <Route path="/" element={<Navigate to="/document/e981971c-ff57-46dc-a932-a60dc1804992" />} />

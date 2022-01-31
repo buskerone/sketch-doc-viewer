@@ -4,6 +4,7 @@ import BreadcrumbIcon from './breadcrumb.svg';
 import CloseIcon from './close.svg';
 import Separator from './separator.svg';
 import SketchLogo from './sketch-logo.svg';
+import LottieAnimation from './lottie-animation.json';
 
 export {
   ArrowLeftIcon,
@@ -11,5 +12,6 @@ export {
   BreadcrumbIcon,
   CloseIcon,
   Separator,
-  SketchLogo
+  SketchLogo,
+  LottieAnimation
 };
