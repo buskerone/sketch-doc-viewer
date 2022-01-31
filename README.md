@@ -23,6 +23,7 @@ yarn start
 
 ## Technologies used
 
+- React v17.0.2
 - TailwindCSS
 - React Router v6
 - graphql-request
