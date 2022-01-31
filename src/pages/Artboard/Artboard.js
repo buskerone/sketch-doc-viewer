@@ -6,61 +6,52 @@ import { getDocument } from '../../graphql/queries/document';
 
 const Artboard = () => {
   const { pathname } = useLocation();
-  const documentId = pathname.split("/")[2];
+  const documentId = pathname.split('/')[2];
 
   const { id: artboardId } = useParams();
 
-  const {
-    currentDocumentData,
-    setCurrentDocumentData,
-    setCurrentArtboard,
-    currentArtboard
-  } = useContext(AppContext);
+  const { currentDocumentData, setCurrentDocumentData, setCurrentArtboard, currentArtboard } =
+    useContext(AppContext);
 
   useEffect(() => {
     const fetchDocument = async () => {
       try {
-        const doc = await request("https://graphql.sketch.cloud/api", getDocument, { // TODO: move url to env file
+        const doc = await request('https://graphql.sketch.cloud/api', getDocument, {
+          // TODO: move url to env file
           id: documentId
         });
 
         setCurrentDocumentData(doc);
-        setCurrentArtboard(
-          {
-            id: parseInt(artboardId),
-            name: doc.share.version.document.artboards.entries[artboardId - 1].name,
-            files: doc.share.version.document.artboards.entries[artboardId - 1].files
-          }
-        );
-      } catch(e) {
+        setCurrentArtboard({
+          id: parseInt(artboardId),
+          name: doc.share.version.document.artboards.entries[artboardId - 1].name,
+          files: doc.share.version.document.artboards.entries[artboardId - 1].files
+        });
+      } catch (e) {
         console.log(e);
       }
-    }
+    };
 
     if (!currentDocumentData) {
       fetchDocument();
     } else {
-      setCurrentArtboard(
-        {
-          id: parseInt(artboardId),
-          name: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].name,
-          files: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].files
-        }
-      );
+      setCurrentArtboard({
+        id: parseInt(artboardId),
+        name: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].name,
+        files: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].files
+      });
     }
   }, []);
 
   useEffect(() => {
     if (currentDocumentData) {
-      setCurrentArtboard(
-        {
-          id: parseInt(artboardId),
-          name: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].name,
-          files: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].files
-        }
-      );
+      setCurrentArtboard({
+        id: parseInt(artboardId),
+        name: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].name,
+        files: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].files
+      });
     }
-  }, [artboardId, currentDocumentData, setCurrentArtboard])
+  }, [artboardId, currentDocumentData, setCurrentArtboard]);
 
   return (
     <div className="w-full h-full flex justify-center items-center py-10">

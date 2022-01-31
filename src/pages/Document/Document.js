@@ -14,15 +14,16 @@ const Document = () => {
   useEffect(() => {
     const fetchDocument = async () => {
       try {
-        const doc = await request("https://graphql.sketch.cloud/api", getDocument, { // TODO: move url to env file
+        const doc = await request('https://graphql.sketch.cloud/api', getDocument, {
+          // TODO: move url to env file
           id
         });
 
         setCurrentDocumentData(doc);
-      } catch(e) {
+      } catch (e) {
         console.log(e);
       }
-    }
+    };
 
     fetchDocument();
   }, []);
@@ -40,8 +41,7 @@ const Document = () => {
                 artboardUrl={artboard.files[0].thumbnails[0].url}
                 documentId={id}
               />
-            ))
-          }
+            ))}
         </Suspense>
       </div>
     </div>

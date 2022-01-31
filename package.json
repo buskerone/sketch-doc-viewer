@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.2.1",
     "graphql": "^16.3.0",
     "graphql-request": "^3.7.0",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-lottie-player": "^1.4.1",
@@ -19,7 +20,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "eslintConfig": {
     "extends": [
@@ -41,7 +45,12 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
+    "eslint": "^8.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
     "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
     "tailwindcss": "^3.0.17"
   }
 }

@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { PropTypes } from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
 import { Header } from '../../components';
@@ -8,7 +9,7 @@ const MainLayout = ({ children }) => {
   const location = useLocation();
   const { pathname } = location;
 
-  const isArtboard = pathname.includes("artboard");
+  const isArtboard = pathname.includes('artboard');
 
   const { currentDocumentData, currentArtboard } = useContext(AppContext);
   const { identifier: currentDocumentId } = currentDocumentData && currentDocumentData.share;
@@ -20,7 +21,7 @@ const MainLayout = ({ children }) => {
   const navigateThroughArtboards = (nav) => {
     let newArtboardId = parseInt(currentArtboardId);
 
-    if (nav === "next") {
+    if (nav === 'next') {
       if (currentArtboardId < totalArtboards) {
         newArtboardId++;
       }
@@ -31,7 +32,7 @@ const MainLayout = ({ children }) => {
     }
 
     navigate(`/document/${currentDocumentId}/artboard/${newArtboardId}`);
-  }
+  };
 
   return (
     <div className="flex flex-col h-screen w-full">
@@ -42,14 +43,16 @@ const MainLayout = ({ children }) => {
         totalArtboards={totalArtboards}
         isArtboard={isArtboard}
         onClose={() => navigate(`/document/${currentDocumentId}`)}
-        onPrev={() => navigateThroughArtboards("prev")}
-        onNext={() => navigateThroughArtboards("next")}
+        onPrev={() => navigateThroughArtboards('prev')}
+        onNext={() => navigateThroughArtboards('next')}
       />
-      <div className="bg-[#F9F9F9] flex flex-grow justify-center items-center">
-        {children}
-      </div>
+      <div className="bg-[#F9F9F9] flex flex-grow justify-center items-center">{children}</div>
     </div>
   );
+};
+
+MainLayout.propTypes = {
+  children: PropTypes.node
 };
 
 export default MainLayout;

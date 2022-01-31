@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import {
   SketchLogo,
   CloseIcon,
@@ -18,7 +19,7 @@ const Header = ({
   onNext
 }) => (
   <header className="z-50 flex justify-between items-center w-full h-16 py-6 shadow-md">
-    {isArtboard ?
+    {isArtboard ? (
       <>
         <div className="flex w-72 justify-start items-center">
           <button className="focus:outline-none p-6" onClick={onClose}>
@@ -46,13 +47,24 @@ const Header = ({
 
         <div className="flex w-72 justify-end items-center" />
       </>
-      :
+    ) : (
       <div className="flex">
         <img className="ml-6 mr-6" alt="sketch" src={SketchLogo} />
         <span>{documentName}</span>
       </div>
-    }
+    )}
   </header>
 );
+
+Header.propTypes = {
+  documentName: PropTypes.string,
+  artboardId: PropTypes.number,
+  artboardName: PropTypes.string,
+  isArtboard: PropTypes.bool,
+  totalArtboards: PropTypes.number,
+  onClose: PropTypes.func,
+  onPrev: PropTypes.func,
+  onNext: PropTypes.func
+};
 
 export default Header;
