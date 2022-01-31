@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import AppContext from '../context/AppContext';
-import { NavBar } from '../components';
+import AppContext from '../../context/AppContext';
+import { Header } from '../../components';
 
-const Layout = ({ children }) => {
+const MainLayout = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
@@ -34,8 +34,8 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <div className="h-screen w-full">
-      <NavBar
+    <div className="flex flex-col h-screen w-full">
+      <Header
         documentName={documentName}
         artboardId={currentArtboardId}
         artboardName={currentArtboardName}
@@ -45,11 +45,11 @@ const Layout = ({ children }) => {
         onPrev={() => navigateThroughArtboards("prev")}
         onNext={() => navigateThroughArtboards("next")}
       />
-      <div className="bg-[#F9F9F9] h-full">
+      <div className="bg-[#F9F9F9] flex flex-grow justify-center items-center">
         {children}
       </div>
     </div>
   );
 };
 
-export default Layout;
+export default MainLayout;

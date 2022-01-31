@@ -7,7 +7,7 @@ import {
   BreadcrumbIcon
 } from '../../assets';
 
-const NavBar = ({
+const Header = ({
   documentName,
   artboardId,
   artboardName,
@@ -17,7 +17,7 @@ const NavBar = ({
   onPrev,
   onNext
 }) => (
-  <nav className="flex justify-between items-center w-full h-16 shadow-md">
+  <nav className="z-50 flex justify-between items-center w-full h-16 py-6 shadow-md">
     {isArtboard ?
       <>
         <div className="flex w-72 justify-start items-center">
@@ -55,4 +55,4 @@ const NavBar = ({
   </nav>
 );
 
-export default NavBar;
+export default Header;
