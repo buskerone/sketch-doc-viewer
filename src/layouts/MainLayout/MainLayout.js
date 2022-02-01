@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
-import { Header } from '../../components';
+import { Navbar } from '../../components';
 
 const MainLayout = ({ children }) => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const MainLayout = ({ children }) => {
 
   return (
     <div className="flex flex-col h-screen w-full">
-      <Header
+      <Navbar
         documentName={documentName}
         artboardId={currentArtboardId}
         artboardName={currentArtboardName}

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import AppContext from './context/AppContext';
 import Router from './router';
-import './App.css';
 
 function App() {
   const [currentDocumentData, setCurrentDocumentData] = useState('');

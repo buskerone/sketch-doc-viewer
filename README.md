@@ -41,8 +41,8 @@ yarn start
     |   |-- ArtboardContainer
     |   |   |-- ArtboardContainer.js
     |   |   |-- index.js
-    |   |-- Header
-    |   |   |-- Header.js
+    |   |-- Navbar
+    |   |   |-- Navbar.js
     |   |   |-- index.js
     |   |-- Loader
     |       |-- Loader.js

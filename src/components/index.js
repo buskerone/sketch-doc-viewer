@@ -1,5 +1,5 @@
-import Header from './Header';
+import Navbar from './Navbar';
 import ArtboardContainer from './ArtboardContainer';
 import Loader from './Loader';
 
-export { Header, ArtboardContainer, Loader };
+export { Navbar, ArtboardContainer, Loader };

@@ -8,7 +8,7 @@ import {
   BreadcrumbIcon
 } from '../../assets';
 
-const Header = ({
+const Navbar = ({
   documentName,
   artboardId,
   artboardName,
@@ -18,7 +18,7 @@ const Header = ({
   onPrev,
   onNext
 }) => (
-  <header className="z-50 flex justify-between items-center w-full h-16 py-6 shadow-md">
+  <nav className="z-50 flex justify-between items-center w-full h-16 py-6 shadow-md">
     {isArtboard ? (
       <>
         <div className="flex w-72 justify-start items-center">
@@ -26,7 +26,7 @@ const Header = ({
             <img alt="close" src={CloseIcon} />
           </button>
 
-          <img className="mr-6 h-10" alt="separator" src={Separator} />
+          <img className="mr-2 h-10" alt="separator" src={Separator} />
 
           <button className="focus:outline-none p-4" onClick={onPrev}>
             <img alt="arrow-left" src={ArrowLeftIcon} />
@@ -53,10 +53,10 @@ const Header = ({
         <span>{documentName}</span>
       </div>
     )}
-  </header>
+  </nav>
 );
 
-Header.propTypes = {
+Navbar.propTypes = {
   documentName: PropTypes.string,
   artboardId: PropTypes.number,
   artboardName: PropTypes.string,
@@ -67,4 +67,4 @@ Header.propTypes = {
   onNext: PropTypes.func
 };
 
-export default Header;
+export default Navbar;
