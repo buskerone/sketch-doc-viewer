@@ -4,6 +4,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
 import { Navbar } from '../../components';
 
+/**
+ * Main Layout
+ *
+ * @description main layout component that renders the nav bar and a specific page
+ * e.g document, artboard
+ * @author Carlos Knopel
+ *
+ * @returns React.Component
+ */
 const MainLayout = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();

@@ -8,6 +8,15 @@ import {
   BreadcrumbIcon
 } from '../../assets';
 
+/**
+ * Navbar
+ *
+ * @description navbar component that displays the name of the document/artboard,
+ * it includes navigation through artboards and a "go back" button.
+ * @author Carlos Knopel
+ *
+ * @returns React.Component
+ */
 const Navbar = ({
   documentName,
   artboardId,
@@ -43,14 +52,16 @@ const Navbar = ({
           </button>
         </div>
 
-        <div className="text-center">{artboardName}</div>
+        <div id="artboard-name" className="text-center">
+          {artboardName}
+        </div>
 
         <div className="flex w-72 justify-end items-center" />
       </>
     ) : (
       <div className="flex">
         <img className="ml-6 mr-6" alt="sketch" src={SketchLogo} />
-        <span>{documentName}</span>
+        <span id="document-name">{documentName}</span>
       </div>
     )}
   </nav>

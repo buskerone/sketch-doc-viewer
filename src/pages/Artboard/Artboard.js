@@ -4,6 +4,14 @@ import AppContext from '../../context/AppContext';
 import request from 'graphql-request';
 import { getDocument } from '../../graphql/queries/document';
 
+/**
+ * Artboard
+ *
+ * @description artboard page where users can see a specific artboard
+ * @author Carlos Knopel
+ *
+ * @returns React.Component
+ */
 const Artboard = () => {
   const { pathname } = useLocation();
   const documentId = pathname.split('/')[2];
@@ -16,8 +24,7 @@ const Artboard = () => {
   useEffect(() => {
     const fetchDocument = async () => {
       try {
-        const doc = await request('https://graphql.sketch.cloud/api', getDocument, {
-          // TODO: move url to env file
+        const doc = await request(process.env.REACT_APP_API_URL, getDocument, {
           id: documentId
         });
 
@@ -58,6 +65,7 @@ const Artboard = () => {
       id="artboard-main-container"
       className="w-full h-full flex justify-center items-center py-10">
       <img
+        id="artboard-image"
         className="object-contain h-96 w-auto"
         alt={currentArtboard && currentArtboard.name}
         src={currentArtboard && currentArtboard.files[0].url}

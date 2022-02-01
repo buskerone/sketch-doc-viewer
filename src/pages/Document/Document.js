@@ -7,6 +7,14 @@ import { getDocument } from '../../graphql/queries/document';
 
 const ArtboardContainer = lazy(() => import('../../components/ArtboardContainer'));
 
+/**
+ * Document
+ *
+ * @description document page where users can see all the artboards
+ * @author Carlos Knopel
+ *
+ * @returns React.Component
+ */
 const Document = () => {
   const { id } = useParams();
   const { currentDocumentData, setCurrentDocumentData } = useContext(AppContext);
@@ -14,7 +22,7 @@ const Document = () => {
   useEffect(() => {
     const fetchDocument = async () => {
       try {
-        const doc = await request('https://graphql.sketch.cloud/api', getDocument, {
+        const doc = await request(process.env.REACT_APP_API_URL, getDocument, {
           // TODO: move url to env file
           id
         });

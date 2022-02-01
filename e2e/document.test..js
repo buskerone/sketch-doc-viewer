@@ -15,7 +15,13 @@ test.describe('Document', () => {
     );
   });
 
-  test('Check if main container exists', async ({ page }) => {
-    await page.waitForSelector('#document-main-container');
+  test('Check if document name exists in nav bar', async ({ page }) => {
+    const documentNameElement = await page.waitForSelector('#document-name');
+    const documentName = await documentNameElement.innerText();
+    await expect(documentName).toBe('Screens');
+  });
+
+  test('Check if artboards exist', async ({ page }) => {
+    await page.waitForSelector('#artboard-container');
   });
 });
