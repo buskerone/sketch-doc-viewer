@@ -54,7 +54,9 @@ const Artboard = () => {
   }, [artboardId, currentDocumentData, setCurrentArtboard]);
 
   return (
-    <div className="w-full h-full flex justify-center items-center py-10">
+    <div
+      id="artboard-main-container"
+      className="w-full h-full flex justify-center items-center py-10">
       <img
         className="object-contain h-96 w-auto"
         alt={currentArtboard && currentArtboard.name}

@@ -20,6 +20,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "e2e:test": "playwright test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -44,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@playwright/test": "^1.18.1",
     "autoprefixer": "^10.4.2",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
