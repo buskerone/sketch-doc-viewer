@@ -3,8 +3,8 @@ import AppContext from './context/AppContext';
 import Router from './router';
 
 function App() {
-  const [currentDocumentData, setCurrentDocumentData] = useState('');
-  const [currentArtboard, setCurrentArtboard] = useState('');
+  const [currentDocumentData, setCurrentDocumentData] = useState(null);
+  const [currentArtboard, setCurrentArtboard] = useState(null);
 
   const appCtx = {
     currentDocumentData,

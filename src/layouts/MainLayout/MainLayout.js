@@ -21,14 +21,16 @@ const MainLayout = ({ children }) => {
   const isArtboard = pathname.includes('artboard');
 
   const { currentDocumentData, currentArtboard } = useContext(AppContext);
-  const { identifier: currentDocumentId } = currentDocumentData && currentDocumentData.share;
-  const { name: documentName } = currentDocumentData && currentDocumentData.share.version.document;
-  const { name: currentArtboardName, id: currentArtboardId } = currentArtboard;
-  const { artboards } = currentDocumentData && currentDocumentData.share.version.document;
-  const totalArtboards = currentDocumentData && artboards.entries.length;
+
+  const currentDocumentId = currentDocumentData?.share.identifier;
+  const documentName = currentDocumentData?.share.version.document.name;
+  const currentArtboardId = currentArtboard ? currentArtboard?.id : 0;
+  const currentArtboardName = currentArtboard?.name;
+  const artboards = currentDocumentData?.share.version.document.artboards;
+  const totalArtboards = artboards ? artboards?.entries.length : 0;
 
   const navigateThroughArtboards = (nav) => {
-    let newArtboardId = parseInt(currentArtboardId);
+    let newArtboardId = currentArtboardId;
 
     if (nav === 'next') {
       if (currentArtboardId < totalArtboards) {
@@ -47,9 +49,9 @@ const MainLayout = ({ children }) => {
     <div className="flex flex-col h-screen w-full">
       <Navbar
         documentName={documentName}
-        artboardId={currentArtboardId}
+        artboardId={parseInt(currentArtboardId)}
         artboardName={currentArtboardName}
-        totalArtboards={totalArtboards}
+        totalArtboards={parseInt(totalArtboards)}
         isArtboard={isArtboard}
         onClose={() => navigate(`/document/${currentDocumentId}`)}
         onPrev={() => navigateThroughArtboards('prev')}

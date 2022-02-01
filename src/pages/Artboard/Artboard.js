@@ -30,7 +30,7 @@ const Artboard = () => {
 
         setCurrentDocumentData(doc);
         setCurrentArtboard({
-          id: parseInt(artboardId),
+          id: artboardId,
           name: doc.share.version.document.artboards.entries[artboardId - 1].name,
           files: doc.share.version.document.artboards.entries[artboardId - 1].files
         });
@@ -44,8 +44,8 @@ const Artboard = () => {
     } else {
       setCurrentArtboard({
         id: parseInt(artboardId),
-        name: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].name,
-        files: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].files
+        name: currentDocumentData?.share.version.document.artboards.entries[artboardId - 1].name,
+        files: currentDocumentData?.share.version.document.artboards.entries[artboardId - 1].files
       });
     }
   }, []);
@@ -54,8 +54,8 @@ const Artboard = () => {
     if (currentDocumentData) {
       setCurrentArtboard({
         id: parseInt(artboardId),
-        name: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].name,
-        files: currentDocumentData.share.version.document.artboards.entries[artboardId - 1].files
+        name: currentDocumentData?.share.version.document.artboards.entries[artboardId - 1].name,
+        files: currentDocumentData?.share.version.document.artboards.entries[artboardId - 1].files
       });
     }
   }, [artboardId, currentDocumentData, setCurrentArtboard]);
@@ -67,8 +67,8 @@ const Artboard = () => {
       <img
         id="artboard-image"
         className="object-contain h-96 w-auto"
-        alt={currentArtboard && currentArtboard.name}
-        src={currentArtboard && currentArtboard.files[0].url}
+        alt={currentArtboard?.name}
+        src={currentArtboard?.files[0].url}
       />
     </div>
   );

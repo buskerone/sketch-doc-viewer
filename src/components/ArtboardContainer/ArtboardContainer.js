@@ -25,7 +25,7 @@ const ArtboardContainer = ({ documentId, artboardId, artboardName, artboardUrl }
 };
 
 ArtboardContainer.propTypes = {
-  documentId: PropTypes.number,
+  documentId: PropTypes.string,
   artboardId: PropTypes.number,
   artboardName: PropTypes.string,
   artboardUrl: PropTypes.string
