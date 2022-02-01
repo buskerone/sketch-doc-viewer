@@ -1,11 +1,11 @@
 import { useEffect, useContext, Suspense, lazy } from 'react';
-import AppContext from '../../context/AppContext';
-import { Loader } from '../../components';
+import AppContext from 'context/AppContext';
+import { Loader } from 'components';
 import { useParams } from 'react-router-dom';
-import useCallQuery from '../../hooks/useCallQuery';
-import { getDocument } from '../../graphql/queries/document';
+import useCallQuery from 'hooks/useCallQuery';
+import { getDocument } from 'graphql/queries/document';
 
-const ArtboardContainer = lazy(() => import('../../components/ArtboardContainer'));
+const ArtboardContainer = lazy(() => import('components/ArtboardContainer'));
 
 /**
  * Document

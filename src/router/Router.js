@@ -1,10 +1,10 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Loader } from '../components';
+import { Loader } from 'components';
 
-const MainLayout = lazy(() => import('../layouts/MainLayout'));
-const Document = lazy(() => import('../pages/Document'));
-const Artboard = lazy(() => import('../pages/Artboard'));
+const MainLayout = lazy(() => import('layouts/MainLayout'));
+const Document = lazy(() => import('pages/Document'));
+const Artboard = lazy(() => import('pages/Artboard'));
 
 const Router = () => {
   return (

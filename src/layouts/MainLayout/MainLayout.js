@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { PropTypes } from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
-import AppContext from '../../context/AppContext';
-import { Navbar } from '../../components';
+import AppContext from 'context/AppContext';
+import { Navbar } from 'components';
 
 /**
  * Main Layout

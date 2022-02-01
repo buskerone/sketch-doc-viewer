@@ -6,7 +6,7 @@ import {
   ArrowRightIcon,
   ArrowLeftIcon,
   BreadcrumbIcon
-} from '../../assets';
+} from 'assets';
 
 /**
  * Navbar

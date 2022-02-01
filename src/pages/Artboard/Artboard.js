@@ -1,8 +1,8 @@
 import { useEffect, useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import AppContext from '../../context/AppContext';
-import useCallQuery from '../../hooks/useCallQuery';
-import { getDocument } from '../../graphql/queries/document';
+import AppContext from 'context/AppContext';
+import useCallQuery from 'hooks/useCallQuery';
+import { getDocument } from 'graphql/queries/document';
 
 /**
  * Artboard
