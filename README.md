@@ -4,7 +4,11 @@
 This web application allows users to view Sketch Documents & Artboards in the cloud.
 
 ## How to run it
-First, install node modules:
+First, create your .env file:
+```sh
+REACT_APP_API_URL="https://graphql.sketch.cloud/api"
+```
+Install node modules:
 ```sh
 yarn install
 ```
@@ -20,6 +24,7 @@ yarn start
 - Load different documents depending on the URL
 - Navigation through Artboards
 - Code-Splitting (Lazy+Suspense)
+- E2e tests with Playwright
 
 ## Technologies used
 
@@ -49,6 +54,9 @@ yarn start
     |       |-- index.js
     |-- context
     |   |-- AppContext.js
+    |-- e2e
+    |   |-- artboard.test.js
+    |   |-- document.test.js
     |-- graphql
     |   |-- queries
     |       |-- document.js
