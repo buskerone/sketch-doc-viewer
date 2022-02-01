@@ -2,7 +2,7 @@ import { useEffect, useContext, Suspense, lazy } from 'react';
 import AppContext from '../../context/AppContext';
 import { Loader } from '../../components';
 import { useParams } from 'react-router-dom';
-import request from 'graphql-request';
+import useCallQuery from '../../hooks/useCallQuery';
 import { getDocument } from '../../graphql/queries/document';
 
 const ArtboardContainer = lazy(() => import('../../components/ArtboardContainer'));
@@ -19,22 +19,16 @@ const Document = () => {
   const { id } = useParams();
   const { currentDocumentData, setCurrentDocumentData } = useContext(AppContext);
 
+  const { response } = useCallQuery({
+    query: getDocument,
+    params: { id }
+  });
+
   useEffect(() => {
-    const fetchDocument = async () => {
-      try {
-        const doc = await request(process.env.REACT_APP_API_URL, getDocument, {
-          // TODO: move url to env file
-          id
-        });
-
-        setCurrentDocumentData(doc);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    fetchDocument();
-  }, []);
+    if (response !== null) {
+      setCurrentDocumentData(response);
+    }
+  }, [response]);
 
   return (
     <div id="document-main-container" className="flex flex-col justify-center items-center py-8">

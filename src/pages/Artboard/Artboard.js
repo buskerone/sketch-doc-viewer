@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
-import request from 'graphql-request';
+import useCallQuery from '../../hooks/useCallQuery';
 import { getDocument } from '../../graphql/queries/document';
 
 /**
@@ -21,34 +21,21 @@ const Artboard = () => {
   const { currentDocumentData, setCurrentDocumentData, setCurrentArtboard, currentArtboard } =
     useContext(AppContext);
 
+  const { response } = useCallQuery({
+    query: getDocument,
+    params: { id: documentId }
+  });
+
   useEffect(() => {
-    const fetchDocument = async () => {
-      try {
-        const doc = await request(process.env.REACT_APP_API_URL, getDocument, {
-          id: documentId
-        });
-
-        setCurrentDocumentData(doc);
-        setCurrentArtboard({
-          id: artboardId,
-          name: doc.share.version.document.artboards.entries[artboardId - 1].name,
-          files: doc.share.version.document.artboards.entries[artboardId - 1].files
-        });
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    if (!currentDocumentData) {
-      fetchDocument();
-    } else {
+    if (response) {
+      setCurrentDocumentData(response);
       setCurrentArtboard({
         id: parseInt(artboardId),
-        name: currentDocumentData?.share.version.document.artboards.entries[artboardId - 1].name,
-        files: currentDocumentData?.share.version.document.artboards.entries[artboardId - 1].files
+        name: response.share.version.document.artboards.entries[artboardId - 1].name,
+        files: response.share.version.document.artboards.entries[artboardId - 1].files
       });
     }
-  }, []);
+  }, [response]);
 
   useEffect(() => {
     if (currentDocumentData) {

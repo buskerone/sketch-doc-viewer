@@ -24,10 +24,10 @@ const MainLayout = ({ children }) => {
 
   const currentDocumentId = currentDocumentData?.share.identifier;
   const documentName = currentDocumentData?.share.version.document.name;
-  const currentArtboardId = currentArtboard ? currentArtboard?.id : 0;
+  const currentArtboardId = currentArtboard?.id || 0;
   const currentArtboardName = currentArtboard?.name;
   const artboards = currentDocumentData?.share.version.document.artboards;
-  const totalArtboards = artboards ? artboards?.entries.length : 0;
+  const totalArtboards = artboards?.entries.length || 0;
 
   const navigateThroughArtboards = (nav) => {
     let newArtboardId = currentArtboardId;
