@@ -106,3 +106,7 @@ yarn e2e:test
 - Double check routing system for a large scale app
 - Add 404 pages
 - Implement Sentry or similar for error monitoring
+
+## Notes
+
+If you see some warnings after doing yarn start, it's because of an issue with graphql-request library: https://github.com/prisma-labs/graphql-request/issues/311
