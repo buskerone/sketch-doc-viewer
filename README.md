@@ -100,3 +100,5 @@ yarn e2e:test
 - Image loading optimization
 - Version with TypeScript
 - Double check routing system for a large scale app
+- Add 404 pages
+- Implement Sentry or similar for error monitoring
