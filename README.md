@@ -16,6 +16,10 @@ Run the app:
 ```sh
 yarn start
 ```
+Open this URL in your browser:
+```sh
+http://localhost:3000
+```
 
 ## Run e2e tests
 First, make sure to install supported browsers
