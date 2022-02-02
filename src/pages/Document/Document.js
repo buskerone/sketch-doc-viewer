@@ -1,4 +1,4 @@
-import { useEffect, useContext, Suspense, lazy } from 'react';
+import { useLayoutEffect, useContext, Suspense, lazy } from 'react';
 import AppContext from 'context/AppContext';
 import { Loader } from 'components';
 import { useParams } from 'react-router-dom';
@@ -29,7 +29,7 @@ const Document = () => {
   });
 
   // Save current document data
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (response !== null) {
       setCurrentDocumentData(response);
     }

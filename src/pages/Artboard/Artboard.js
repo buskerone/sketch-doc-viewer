@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useLayoutEffect, useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { ArtboardContainer } from 'components';
 import AppContext from 'context/AppContext';
@@ -44,7 +44,7 @@ const Artboard = () => {
   });
 
   // Effect to set document and artboard data when fetching graphql query
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (response) {
       setCurrentDocumentData(response);
       setCurrentArtboard({
@@ -56,7 +56,7 @@ const Artboard = () => {
   }, [response]);
 
   // Effect for artboard navigation
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (currentDocumentData) {
       setCurrentArtboard({
         id: parseInt(artboardId),
