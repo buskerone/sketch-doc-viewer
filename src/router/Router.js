@@ -6,6 +6,14 @@ const MainLayout = lazy(() => import('layouts/MainLayout'));
 const Document = lazy(() => import('pages/Document'));
 const Artboard = lazy(() => import('pages/Artboard'));
 
+/**
+ * Router
+ *
+ * @description all the routes are defined here
+ * @author Carlos Knopel
+ *
+ * @returns React.Component
+ */
 const Router = () => {
   return (
     <BrowserRouter>

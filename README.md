@@ -17,6 +17,16 @@ Run the app:
 yarn start
 ```
 
+## Run e2e tests
+First, make sure to install supported browsers
+```sh
+npx playwright install
+```
+Run e2e tests
+```sh
+yarn e2e:test
+```
+
 ## Features
 
 - Document viewer
@@ -33,7 +43,9 @@ yarn start
 - React Router v6
 - graphql-request
 - Lottie (animations)
+- Playwright (e2e tests)
 - Eslint + prettier
+- Vercel: https://sketch-cloud.vercel.app/ (Because of security reasons I'm not able to fetch data from API - CORS issue)
 
 ## Folder structure
 ```sh
@@ -45,6 +57,9 @@ yarn start
     |   |-- index.js
     |   |-- ArtboardContainer
     |   |   |-- ArtboardContainer.js
+    |   |   |-- index.js
+    |   |-- ThumbnailContainer
+    |   |   |-- ThumbnailContainer.js
     |   |   |-- index.js
     |   |-- Navbar
     |   |   |-- Navbar.js
@@ -62,6 +77,8 @@ yarn start
     |       |-- document.js
     |-- hooks
     |   |-- useCallQuery.js
+    |   |-- useWindowDimensions.js
+    |   |-- index.js
     |-- layouts
     |   |-- MainLayout
     |       |-- MainLayout.js

@@ -11,7 +11,7 @@ import {
 /**
  * Navbar
  *
- * @description navbar component that displays the name of the document/artboard,
+ * @description nav bar component that displays the name of the document/artboard,
  * it includes navigation through artboards and a "go back" button.
  * @author Carlos Knopel
  *

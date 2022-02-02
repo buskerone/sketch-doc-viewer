@@ -2,10 +2,10 @@ import { useEffect, useContext, Suspense, lazy } from 'react';
 import AppContext from 'context/AppContext';
 import { Loader } from 'components';
 import { useParams } from 'react-router-dom';
-import useCallQuery from 'hooks/useCallQuery';
+import { useCallQuery } from 'hooks';
 import { getDocument } from 'graphql/queries/document';
 
-const ArtboardContainer = lazy(() => import('components/ArtboardContainer'));
+const ThumbnailContainer = lazy(() => import('components/ThumbnailContainer'));
 
 /**
  * Document
@@ -16,14 +16,19 @@ const ArtboardContainer = lazy(() => import('components/ArtboardContainer'));
  * @returns React.Component
  */
 const Document = () => {
+  // Get document id from URL
   const { id } = useParams();
+
+  // Context
   const { currentDocumentData, setCurrentDocumentData } = useContext(AppContext);
 
+  // Fetch data from graphql query
   const { response } = useCallQuery({
     query: getDocument,
     params: { id }
   });
 
+  // Save current document data
   useEffect(() => {
     if (response !== null) {
       setCurrentDocumentData(response);
@@ -36,7 +41,7 @@ const Document = () => {
         <Suspense fallback={<Loader />}>
           {currentDocumentData &&
             currentDocumentData.share.version.document.artboards.entries.map((artboard, key) => (
-              <ArtboardContainer
+              <ThumbnailContainer
                 key={key}
                 artboardId={key + 1}
                 artboardName={artboard.name}

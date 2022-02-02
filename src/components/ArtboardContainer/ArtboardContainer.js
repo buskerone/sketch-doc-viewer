@@ -1,34 +1,36 @@
 import { PropTypes } from 'prop-types';
-import { Link } from 'react-router-dom';
 
 /**
- * Artboard Container
+ * Artboard container component
  *
- * @description artboard container component that renders an image with a link so
- * users can navigate to a specific artboard
+ * @description Artboard container component that renders an image container with dynamic
+ * height based on viewport
  * @author Carlos Knopel
  *
  * @returns React.Component
  */
-const ArtboardContainer = ({ documentId, artboardId, artboardName, artboardUrl }) => {
+const ArtboardContainer = ({ artboardImageHeight, artboardName, artboardImageSrc }) => {
   return (
-    <Link
-      id="artboard-container"
-      className="focus:outline-none"
-      to={`/document/${documentId}/artboard/${artboardId}`}>
-      <div className="flex flex-col justify-center items-center">
-        <img className="object-contain h-72 w-40 mb-4" alt={artboardName} src={artboardUrl} />
-        <div className="text-sm">{artboardName}</div>
-      </div>
-    </Link>
+    <div
+      id="artboard-main-container"
+      className="w-full h-full flex flex-col justify-center items-center py-10">
+      <img
+        id="artboard-image"
+        style={{
+          width: 'auto',
+          height: artboardImageHeight
+        }}
+        alt={artboardName}
+        src={artboardImageSrc}
+      />
+    </div>
   );
 };
 
 ArtboardContainer.propTypes = {
-  documentId: PropTypes.string,
-  artboardId: PropTypes.number,
+  artboardImageHeight: PropTypes.number,
   artboardName: PropTypes.string,
-  artboardUrl: PropTypes.string
+  artboardImageSrc: PropTypes.string
 };
 
 export default ArtboardContainer;

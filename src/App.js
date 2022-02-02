@@ -2,7 +2,15 @@ import { useState } from 'react';
 import AppContext from './context/AppContext';
 import Router from './router';
 
-function App() {
+/**
+ * App
+ *
+ * @description renders the entire app
+ * @author Carlos Knopel
+ *
+ * @returns React.Component
+ */
+const App = () => {
   const [currentDocumentData, setCurrentDocumentData] = useState(null);
   const [currentArtboard, setCurrentArtboard] = useState(null);
 
@@ -18,6 +26,6 @@ function App() {
       <Router />
     </AppContext.Provider>
   );
-}
+};
 
 export default App;
