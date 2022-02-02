@@ -94,3 +94,9 @@ yarn e2e:test
         |-- Router.js
         |-- index.js
 ```
+
+## Things that can be improved
+
+- Image loading optimization
+- Version with TypeScript
+- Double check routing system for a large scale app
