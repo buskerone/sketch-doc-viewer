@@ -4,6 +4,8 @@
 This web application allows users to view Sketch Documents & Artboards in the cloud.
 
 ## How to run it
+**Important:** tested with Node.js v16.13.2
+
 First, create your .env file:
 ```sh
 REACT_APP_API_URL="https://graphql.sketch.cloud/api"
