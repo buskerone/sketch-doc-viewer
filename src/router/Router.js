@@ -24,8 +24,8 @@ const Router = () => {
               path="/"
               element={<Navigate to="/document/e981971c-ff57-46dc-a932-a60dc1804992" />}
             />
-            <Route path="/document/:id" element={<Document />} />
-            <Route path="/document/:id/artboard/:id" element={<Artboard />} />
+            <Route path="/document/:documentId" element={<Document />} />
+            <Route path="/document/:documentId/artboard/:artboardId" element={<Artboard />} />
           </Routes>
         </MainLayout>
       </Suspense>

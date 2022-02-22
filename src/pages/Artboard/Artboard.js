@@ -1,5 +1,5 @@
 import { useLayoutEffect, useContext } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ArtboardContainer } from 'components';
 import AppContext from 'context/AppContext';
 import { useCallQuery, useWindowDimensions } from 'hooks';
@@ -17,12 +17,8 @@ import { getDocument } from 'graphql/queries/document';
 const viewportPadding = 144;
 
 const Artboard = () => {
-  // Get document id from URL
-  const { pathname } = useLocation();
-  const documentId = pathname.split('/')[2];
-
-  // Get artbaord id from URL
-  const { id: artboardId } = useParams();
+  // Get artbaord and document id from URL
+  const { documentId, artboardId } = useParams();
 
   // App context
   const { currentDocumentData, setCurrentDocumentData, setCurrentArtboard, currentArtboard } =

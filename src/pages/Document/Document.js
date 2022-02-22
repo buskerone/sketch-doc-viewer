@@ -17,7 +17,7 @@ const ThumbnailContainer = lazy(() => import('components/ThumbnailContainer'));
  */
 const Document = () => {
   // Get document id from URL
-  const { id } = useParams();
+  const { documentId } = useParams();
 
   // Context
   const { currentDocumentData, setCurrentDocumentData } = useContext(AppContext);
@@ -25,7 +25,7 @@ const Document = () => {
   // Fetch data from graphql query
   const { response } = useCallQuery({
     query: getDocument,
-    params: { id }
+    params: { id: documentId }
   });
 
   // Save current document data
@@ -46,7 +46,7 @@ const Document = () => {
                 artboardId={key + 1}
                 artboardName={artboard.name}
                 artboardUrl={artboard.files[0].thumbnails[0].url}
-                documentId={id}
+                documentId={documentId}
               />
             ))}
         </Suspense>
