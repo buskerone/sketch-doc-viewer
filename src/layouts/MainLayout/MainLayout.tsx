@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { PropTypes } from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AppContext from 'context/AppContext';
 import { Navbar } from 'components';
+import { IAppContextProps } from 'global/types';
 
 /**
  * Main Layout
@@ -13,14 +13,14 @@ import { Navbar } from 'components';
  *
  * @returns React.Component
  */
-const MainLayout = ({ children }) => {
+const MainLayout: React.FC = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
 
   const isArtboard = pathname.includes('artboard');
 
-  const { currentDocumentData, currentArtboard } = useContext(AppContext);
+  const { currentDocumentData, currentArtboard }: IAppContextProps = useContext(AppContext);
 
   const currentDocumentId = currentDocumentData?.share.identifier;
   const documentName = currentDocumentData?.share.version.document.name;
@@ -29,7 +29,7 @@ const MainLayout = ({ children }) => {
   const artboards = currentDocumentData?.share.version.document.artboards;
   const totalArtboards = artboards?.entries.length || 0;
 
-  const navigateThroughArtboards = (nav) => {
+  const navigateThroughArtboards = (nav: string) => {
     let newArtboardId = currentArtboardId;
 
     if (nav === 'next') {
@@ -60,10 +60,6 @@ const MainLayout = ({ children }) => {
       <div className="bg-[#F9F9F9] flex flex-grow justify-center items-center">{children}</div>
     </div>
   );
-};
-
-MainLayout.propTypes = {
-  children: PropTypes.node
 };
 
 export default MainLayout;

@@ -4,7 +4,7 @@ import AppContext from 'context/AppContext';
 import { useWindowDimensions } from 'hooks';
 import { useQuery } from '@apollo/client';
 import { GET_DOCUMENT } from 'graphql/queries/document';
-import { ArtboardContainer } from 'components';
+import { ArtboardContainer, ErrorContainer } from 'components';
 import { Loader } from 'components';
 
 /**
@@ -13,12 +13,12 @@ import { Loader } from 'components';
  * @description artboard page where users can see a specific artboard
  * @author Carlos Knopel
  *
- * @returns React.Component
+ * @returns React.FunctionComponent
  */
 
 const viewportPadding = 144;
 
-const Artboard = () => {
+const Artboard: React.FC = () => {
   // Get artbaord and document id from URL
   const { documentId, artboardId } = useParams();
 
@@ -36,7 +36,7 @@ const Artboard = () => {
       : height - viewportPadding;
 
   // Fetch data from graphql query
-  const { loading, data } = useQuery(GET_DOCUMENT, {
+  const { error, loading, data } = useQuery(GET_DOCUMENT, {
     variables: {
       id: documentId
     }
@@ -44,23 +44,27 @@ const Artboard = () => {
 
   // Effect to set document and artboard data when fetching graphql query
   useLayoutEffect(() => {
-    if (data) {
+    if (data && artboardId) {
       setCurrentDocumentData(data);
       setCurrentArtboard({
-        id: parseInt(artboardId),
-        name: data.share.version.document.artboards.entries[artboardId - 1].name,
-        files: data.share.version.document.artboards.entries[artboardId - 1].files
+        id: artboardId,
+        name: data.share.version.document.artboards.entries[parseInt(artboardId) - 1].name,
+        files: data.share.version.document.artboards.entries[parseInt(artboardId) - 1].files
       });
     }
-  }, [data]);
+  }, [data, artboardId, setCurrentArtboard, setCurrentDocumentData]);
 
   // Effect for artboard navigation
   useLayoutEffect(() => {
-    if (currentDocumentData) {
+    if (currentDocumentData && artboardId) {
       setCurrentArtboard({
-        id: parseInt(artboardId),
-        name: currentDocumentData?.share.version.document.artboards.entries[artboardId - 1].name,
-        files: currentDocumentData?.share.version.document.artboards.entries[artboardId - 1].files
+        id: artboardId,
+        name: currentDocumentData?.share.version.document.artboards.entries[
+          parseInt(artboardId) - 1
+        ].name,
+        files:
+          currentDocumentData?.share.version.document.artboards.entries[parseInt(artboardId) - 1]
+            .files
       });
     }
   }, [artboardId, currentDocumentData, setCurrentArtboard]);
@@ -68,11 +72,15 @@ const Artboard = () => {
   return (
     <div className="w-full h-full">
       {loading && <Loader />}
-      <ArtboardContainer
-        artboardImageHeight={artboardImageHeight}
-        artboardName={currentArtboard?.name}
-        artboardImageSrc={currentArtboard?.files[0].url}
-      />
+      {!error ? (
+        <ArtboardContainer
+          artboardImageHeight={artboardImageHeight}
+          artboardName={currentArtboard?.name}
+          artboardImageSrc={currentArtboard?.files[0].url}
+        />
+      ) : (
+        <ErrorContainer screen="Artboard" />
+      )}
     </div>
   );
 };

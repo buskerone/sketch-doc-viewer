@@ -1,4 +1,4 @@
-import { PropTypes } from 'prop-types';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 /**
@@ -8,27 +8,30 @@ import { Link } from 'react-router-dom';
  * users can navigate to a specific artboard
  * @author Carlos Knopel
  *
- * @returns React.Component
+ * @returns React.FunctionComponent
  */
-const ThumbnailContainer = ({ documentId, artboardId, artboardName, artboardUrl }) => {
+
+interface IThumbnailContainerProps {
+  documentId: string;
+  artboardId: number;
+  artboardName: string;
+  artboardUrl: string;
+}
+
+const ThumbnailContainer: React.FC<IThumbnailContainerProps> = ({
+  documentId,
+  artboardId,
+  artboardName,
+  artboardUrl
+}) => {
   return (
-    <Link
-      id="artboard-container"
-      className="focus:outline-none"
-      to={`/document/${documentId}/artboard/${artboardId}`}>
+    <Link id="artboard-container" to={`/document/${documentId}/artboard/${artboardId}`}>
       <div className="flex flex-col justify-center items-center">
         <img className="object-contain h-72 w-40 mb-4" alt={artboardName} src={artboardUrl} />
         <div className="text-sm">{artboardName}</div>
       </div>
     </Link>
   );
-};
-
-ThumbnailContainer.propTypes = {
-  documentId: PropTypes.string,
-  artboardId: PropTypes.number,
-  artboardName: PropTypes.string,
-  artboardUrl: PropTypes.string
 };
 
 export default ThumbnailContainer;

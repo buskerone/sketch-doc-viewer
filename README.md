@@ -1,34 +1,47 @@
 # Sketch Document Viewer
+
 ![React](https://github.com/aleen42/badges/raw/master/src/react.svg) ![TailwindCSS](https://badges.aleen42.com/src/tailwindcss.svg) ![Eslint](https://github.com/aleen42/badges/raw/master/src/eslint.svg)
 
 This web application allows users to view Sketch Documents & Artboards in the cloud.
 
 ## How to run it
+
 **Important:** tested with Node.js v16.13.2
 
 First, create your .env file:
+
 ```sh
 REACT_APP_API_URL="https://graphql.sketch.cloud/api"
 ```
+
 Install node modules:
+
 ```sh
 yarn install
 ```
+
 Run the app:
+
 ```sh
 yarn start
 ```
+
 Open this URL in your browser:
+
 ```sh
 http://localhost:3000
 ```
 
 ## Run e2e tests
+
 First, make sure to install supported browsers
+
 ```sh
 npx playwright install
 ```
+
 Run e2e tests
+
 ```sh
 yarn e2e:test
 ```
@@ -54,6 +67,7 @@ yarn e2e:test
 - Vercel: https://sketch-cloud.vercel.app/ (Because of security reasons I'm not able to fetch data from API - CORS issue)
 
 ## Folder structure
+
 ```sh
 |-- src
     |-- App.js

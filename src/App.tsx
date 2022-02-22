@@ -16,9 +16,9 @@ const client = new ApolloClient({
  * @description renders the entire app
  * @author Carlos Knopel
  *
- * @returns React.Component
+ * @returns React.FunctionComponent
  */
-const App = () => {
+const App: React.FC = () => {
   const [currentDocumentData, setCurrentDocumentData] = useState(null);
   const [currentArtboard, setCurrentArtboard] = useState(null);
 

@@ -1,5 +1,3 @@
-import { PropTypes } from 'prop-types';
-
 /**
  * Artboard container component
  *
@@ -7,13 +5,25 @@ import { PropTypes } from 'prop-types';
  * height based on viewport
  * @author Carlos Knopel
  *
- * @returns React.Component
+ * @returns React.FunctionComponent
  */
-const ArtboardContainer = ({ artboardImageHeight, artboardName, artboardImageSrc }) => {
+
+interface IArtboardContainerProps {
+  artboardImageHeight: number;
+  artboardName: string;
+  artboardImageSrc: string;
+}
+
+const ArtboardContainer: React.FC<IArtboardContainerProps> = ({
+  artboardImageHeight,
+  artboardName,
+  artboardImageSrc
+}) => {
   return (
     <div
       id="artboard-main-container"
-      className="w-full h-full flex flex-col justify-center items-center py-10">
+      className="w-full h-full flex flex-col justify-center items-center py-10"
+    >
       <img
         id="artboard-image"
         style={{
@@ -25,12 +35,6 @@ const ArtboardContainer = ({ artboardImageHeight, artboardName, artboardImageSrc
       />
     </div>
   );
-};
-
-ArtboardContainer.propTypes = {
-  artboardImageHeight: PropTypes.number,
-  artboardName: PropTypes.string,
-  artboardImageSrc: PropTypes.string
 };
 
 export default ArtboardContainer;
