@@ -1,9 +1,11 @@
 import { useLayoutEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { ArtboardContainer } from 'components';
 import AppContext from 'context/AppContext';
-import { useCallQuery, useWindowDimensions } from 'hooks';
-import { getDocument } from 'graphql/queries/document';
+import { useWindowDimensions } from 'hooks';
+import { useQuery } from '@apollo/client';
+import { GET_DOCUMENT } from 'graphql/queries/document';
+import { ArtboardContainer } from 'components';
+import { Loader } from 'components';
 
 /**
  * Artboard
@@ -34,22 +36,23 @@ const Artboard = () => {
       : height - viewportPadding;
 
   // Fetch data from graphql query
-  const { response } = useCallQuery({
-    query: getDocument,
-    params: { id: documentId }
+  const { loading, data } = useQuery(GET_DOCUMENT, {
+    variables: {
+      id: documentId
+    }
   });
 
   // Effect to set document and artboard data when fetching graphql query
   useLayoutEffect(() => {
-    if (response) {
-      setCurrentDocumentData(response);
+    if (data) {
+      setCurrentDocumentData(data);
       setCurrentArtboard({
         id: parseInt(artboardId),
-        name: response.share.version.document.artboards.entries[artboardId - 1].name,
-        files: response.share.version.document.artboards.entries[artboardId - 1].files
+        name: data.share.version.document.artboards.entries[artboardId - 1].name,
+        files: data.share.version.document.artboards.entries[artboardId - 1].files
       });
     }
-  }, [response]);
+  }, [data]);
 
   // Effect for artboard navigation
   useLayoutEffect(() => {
@@ -63,11 +66,14 @@ const Artboard = () => {
   }, [artboardId, currentDocumentData, setCurrentArtboard]);
 
   return (
-    <ArtboardContainer
-      artboardImageHeight={artboardImageHeight}
-      artboardName={currentArtboard?.name}
-      artboardImageSrc={currentArtboard?.files[0].url}
-    />
+    <div className="w-full h-full">
+      {loading && <Loader />}
+      <ArtboardContainer
+        artboardImageHeight={artboardImageHeight}
+        artboardName={currentArtboard?.name}
+        artboardImageSrc={currentArtboard?.files[0].url}
+      />
+    </div>
   );
 };
 

@@ -2,8 +2,8 @@ import { useLayoutEffect, useContext, Suspense, lazy } from 'react';
 import AppContext from 'context/AppContext';
 import { Loader } from 'components';
 import { useParams } from 'react-router-dom';
-import { useCallQuery } from 'hooks';
-import { getDocument } from 'graphql/queries/document';
+import { useQuery } from '@apollo/client';
+import { GET_DOCUMENT } from 'graphql/queries/document';
 
 const ThumbnailContainer = lazy(() => import('components/ThumbnailContainer'));
 
@@ -23,20 +23,18 @@ const Document = () => {
   const { currentDocumentData, setCurrentDocumentData } = useContext(AppContext);
 
   // Fetch data from graphql query
-  const { response } = useCallQuery({
-    query: getDocument,
-    params: { id: documentId }
+  const { loading, data } = useQuery(GET_DOCUMENT, {
+    variables: {
+      id: documentId
+    }
   });
 
   // Save current document data
-  useLayoutEffect(() => {
-    if (response !== null) {
-      setCurrentDocumentData(response);
-    }
-  }, [response]);
+  useLayoutEffect(() => data && setCurrentDocumentData(data), [data]);
 
   return (
     <div id="document-main-container" className="flex flex-col justify-center items-center py-8">
+      {loading && <Loader />}
       <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 sm:gap-6 md:gap-8 lg:gap-16 xl:gap-20">
         <Suspense fallback={<Loader />}>
           {currentDocumentData &&
