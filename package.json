@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.5.9",
     "graphql": "^16.3.0",
-    "graphql-request": "^3.7.0",
-    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-lottie-player": "^1.4.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.0"
+    "tailwindcss": "^3.0.17",
+    "typescript": "^4.5.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,10 +24,7 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -43,13 +40,10 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.18.1",
+    "@types/node": "^17.0.19",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
     "autoprefixer": "^10.4.2",
-    "eslint": "^8.8.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "postcss": "^8.4.5",
-    "prettier": "^2.5.1",
-    "tailwindcss": "^3.0.17"
+    "postcss": "^8.4.5"
   }
 }

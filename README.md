@@ -1,34 +1,47 @@
 # Sketch Document Viewer
-![React](https://github.com/aleen42/badges/raw/master/src/react.svg) ![TailwindCSS](https://badges.aleen42.com/src/tailwindcss.svg) ![Eslint](https://github.com/aleen42/badges/raw/master/src/eslint.svg)
+
+![React](https://github.com/aleen42/badges/raw/master/src/react.svg) ![TailwindCSS](https://badges.aleen42.com/src/tailwindcss.svg) ![TailwindCSS](https://badges.aleen42.com/src/typescript.svg)
 
 This web application allows users to view Sketch Documents & Artboards in the cloud.
 
 ## How to run it
+
 **Important:** tested with Node.js v16.13.2
 
 First, create your .env file:
+
 ```sh
 REACT_APP_API_URL="https://graphql.sketch.cloud/api"
 ```
+
 Install node modules:
+
 ```sh
 yarn install
 ```
+
 Run the app:
+
 ```sh
 yarn start
 ```
+
 Open this URL in your browser:
+
 ```sh
 http://localhost:3000
 ```
 
 ## Run e2e tests
+
 First, make sure to install supported browsers
+
 ```sh
 npx playwright install
 ```
+
 Run e2e tests
+
 ```sh
 yarn e2e:test
 ```
@@ -47,13 +60,13 @@ yarn e2e:test
 - React v17.0.2
 - TailwindCSS
 - React Router v6
-- graphql-request
+- ApolloClient
 - Lottie (animations)
 - Playwright (e2e tests)
-- Eslint + prettier
 - Vercel: https://sketch-cloud.vercel.app/ (Because of security reasons I'm not able to fetch data from API - CORS issue)
 
 ## Folder structure
+
 ```sh
 |-- src
     |-- App.js
@@ -104,11 +117,4 @@ yarn e2e:test
 ## Things that can be improved
 
 - Image loading optimization
-- Version with TypeScript
-- Double check routing system for a large scale app
-- Add 404 pages
 - Implement Sentry or similar for error monitoring
-
-## Notes
-
-If you see some warnings after doing yarn start, it's because of an issue with graphql-request library: https://github.com/prisma-labs/graphql-request/issues/311

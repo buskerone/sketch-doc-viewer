@@ -5,6 +5,7 @@ import { Loader } from 'components';
 const MainLayout = lazy(() => import('layouts/MainLayout'));
 const Document = lazy(() => import('pages/Document'));
 const Artboard = lazy(() => import('pages/Artboard'));
+const NotFound = lazy(() => import('pages/NotFound'));
 
 /**
  * Router
@@ -12,7 +13,7 @@ const Artboard = lazy(() => import('pages/Artboard'));
  * @description all the routes are defined here
  * @author Carlos Knopel
  *
- * @returns React.Component
+ * @returns React.FunctionComponent
  */
 const Router = () => {
   return (
@@ -24,8 +25,9 @@ const Router = () => {
               path="/"
               element={<Navigate to="/document/e981971c-ff57-46dc-a932-a60dc1804992" />}
             />
-            <Route path="/document/:id" element={<Document />} />
-            <Route path="/document/:id/artboard/:id" element={<Artboard />} />
+            <Route path="/document/:documentId" element={<Document />} />
+            <Route path="/document/:documentId/artboard/:artboardId" element={<Artboard />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </MainLayout>
       </Suspense>
